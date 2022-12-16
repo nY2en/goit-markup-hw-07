@@ -37,7 +37,11 @@ body {
 }
 
 /* Утилиты */
-.list {
+h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+}
+
+ul {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -47,16 +51,25 @@ a {
     text-decoration: none;
 }
 
-h1,h2,h3,h4,h5,h6 {
-    margin: 0;
-    font-size: 14px;
-}
-
 p {
     margin: 0;
 }
 
-/* Шапка */
+/* ШАПКА */
+.header-flex,
+.nav,
+.site-nav,
+.header-contacts,
+.header-contacts__item,
+.header-contacts__links{ 
+    display: flex;  
+    align-items: center;
+}
+
+.page-header {
+    border-bottom: 1px solid var(--header-border-color);
+}
+
 .logo {
     font-family: Raleway, sans-serif;
     font-weight: 700;
@@ -67,20 +80,17 @@ p {
 
     padding-top: 25px;
     padding-bottom: 25px;
-}
-/* колір верхнього лого */
-.logo.primary {
     color: var(--black);
 }
-/* колір половини лого */
-.logoblue {
+
+.logo__half {
     color: var(--accent);
 }
 
+.site-nav__links, 
+.header-contacts__links {
+    position: relative;
 
-/* навігація сайту та мейл/тел */
-.site-nav .links, 
-.connect-with-us .links {
     color:inherit;
 
     font-weight: 500;
@@ -96,44 +106,33 @@ p {
 
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-/* текуща сторінка */
-.site-nav .links.current {
-    color: var(--accent);
-}
-/* колір мейл/тел */
-.links.color {
+
+.site-nav__links {
     color: var(--text-secondary-color);
 }
-/* ефекти навігації */
-.site-nav .links:hover,
-.site-nav .links:focus {
+
+.site-nav__links--current {
     color: var(--accent);
 }
-/* ефекти мейл/тел */
-.connect-with-us .links:hover,
-.connect-with-us .links:focus {
-    color: var(--accent);   
-}
-/* іконки */
-.connect-with-us .icon { 
-    fill: currentColor;
-    margin-right: 10px;
+
+.site-nav__links:hover,
+.site-nav__links:focus,
+.header-contacts__links:hover,
+.header-contacts__links:focus{
+    color: var(--accent);
 }
 
-.icon.mail { 
-    width: 16px;
-    height: 12px;
+.site-nav__item:not(:last-child),
+.header-contacts__item:not(:last-child) {
+    margin-right: 30px;
 }
 
-.icon.tel { 
-    width: 10px;
-    height: 16px;
+.header-contacts {
+    margin-left: auto;
 }
+
 /* підкреслення */
-.site-nav .links {
-    position: relative;
-}
-.site-nav .links::after {
+.site-nav__links::after {
     content: ' ';
 
     position: absolute;
@@ -150,46 +149,35 @@ p {
                 transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
- .links.current::after {
+ .site-nav__links.site-nav__links--current::after {
     transform: scaleX(1);
     opacity: 1;
 }
 
-.links:hover::after,
-.links:focus::after{
+.site-nav__links:hover::after,
+.site-nav__links:focus::after{
     transform: scaleX(1);
     background-color: var(--accent);
     opacity: 1;
 }
 
-header {
-    border-bottom: 1px solid var(--header-border-color);
+/* іконки */
+.header-contacts__icon { 
+    fill: currentColor;
+    margin-right: 10px;
 }
 
-.header-flex,
-.nav,
-.site-nav,
-.connect-with-us,
-.connect-with-us .item,
-.connect-with-us a{ 
-    display: flex;  
-    align-items: center;
+.header-contacts__icon--mail { 
+    width: 16px;
+    height: 12px;
 }
 
-.site-nav > .item:not(:last-child),
-.connect-with-us > .item:not(:last-child) {
-    margin-right: 30px;
+.header-contacts__icon--tel { 
+    width: 10px;
+    height: 16px;
 }
 
-.connect-with-us {
-    margin-left: auto;
-}
-
-
-
-/* МЕЙН index.html */
-
-/* Герой */
+/* МЕЙН  */
 .hero {
     background-color: var(--background-secondary-color);
 
@@ -211,7 +199,7 @@ header {
     background-position: center;
     background-size: cover;
 }
-/* Заголовог героя */
+/* Заголовок героя */
 .hero-title {
     color: var(--white);
    
